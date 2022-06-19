@@ -59,4 +59,4 @@ landmarks, boneLabels = ModelConfiguration.runModel(model, ctImage, binaryImage,
 - The **adaptModel** and **adaptData** functions prepares the model and data for inference.
 - The **runModel** function generates landmark and bone labeling predictions and resample them to the original CT image space.
 
-If you have any questions, please email the corresponding author Jiawei Liu at jiawei.liu@cuanschutz.edu
+If you have any questions, please email Jiawei Liu at jiawei.liu@cuanschutz.edu
