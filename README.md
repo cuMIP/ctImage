@@ -50,7 +50,7 @@ landmarks, boneLabels = ModelConfiguration.runModel(model, ctImage, binaryImage,
 ```
 *When using this code, be sure to assign corret path containing a valid MHA graphic file of a CT image to the ```ctImage```.*
 
-### The work flow
+### The workflow
 
 - The **CreateBoneMask** function creates a binary mask for the CT image.
 - The **ResampleAndMaskImage** function resamples and masks the CT image to the correct size and normalizes the intensity.
