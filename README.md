@@ -51,11 +51,12 @@ landmarks, boneLabels = ModelConfiguration.runModel(model, ctImage, binaryImage,
 *When using this code, be sure to assign corret path containing a valid MHA graphic file of a CT image to the ```ctImage```.*
 
 ### The work flow
-The **CreateBoneMask** function creates a binary mask for the CT image.
-The **ResampleAndMaskImage** function resamples and masks the CT image to the correct size and normalize the intensity.
-The **getDevice** function specifies the device for the torch model.
-The **getDevice** function specifies the device for the torch model.
-The **adaptModel** and **adaptData** functions prepares the model and data for inference.
-The **runModel** function generates landmark and bone labeling predictions and resample them to the original CT image space.
+
+- The **CreateBoneMask** function creates a binary mask for the CT image.
+- The **ResampleAndMaskImage** function resamples and masks the CT image to the correct size and normalize the intensity.
+- The **getDevice** function specifies the device for the torch model.
+- The **getDevice** function specifies the device for the torch model.
+- The **adaptModel** and **adaptData** functions prepares the model and data for inference.
+- The **runModel** function generates landmark and bone labeling predictions and resample them to the original CT image space.
 
 If you have any questions, please email the corresponding author Jiawei Liu at jiawei.liu@cuanschutz.edu
