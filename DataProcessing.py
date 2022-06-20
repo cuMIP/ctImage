@@ -6,8 +6,6 @@ import torchio as tio
 import skimage
 import skimage.measure
 
-normalize = tio.RescaleIntensity(out_min_max = (0, 1), p = 1)
-
 def FloodFillHull(image):
     points = np.transpose(np.where(image))
     hull = ConvexHull(points)
@@ -40,7 +38,7 @@ def CreateHeadMask(ctImage, hounsfieldThreshold = -200):
 
     return headMask
 
-def CreateBoneMask(ctImage, headMaskImage=None, minimumThreshold=160, maximumThreshold=160, verbose=False, ):
+def CreateBoneMask(ctImage, headMaskImage=None, minimumThreshold=100, maximumThreshold=200, verbose=False):
     """
     Uses adapting thresholding to create a binary mask of the cranial bones from an input CT image.
     [Dangi et al., Robust head CT image registration pipeline for craniosynostosis skull correction surgery, Healthcare Technology Letters, 2017]
@@ -99,9 +97,10 @@ def ResampleAndMaskImage(ctImage, binaryImage, outputImageSize = np.array([96, 9
     convexMaskImage.CopyInformation(binaryImage)
     convexMaskImage = sitk.Cast(convexMaskImage, sitk.sitkUInt32)
     
-    ctImage = normalize(ctImage)
+    normalize = tio.RescaleIntensity(out_min_max = (0, 1), p = 1)
     filter = sitk.MaskImageFilter()
     ctImage = filter.Execute(ctImage, convexMaskImage)
+    ctImage = normalize(ctImage)
 
     templateImageArray = np.zeros(outputImageSize, dtype=np.float32)
     templateImage = sitk.GetImageFromArray(templateImageArray)
