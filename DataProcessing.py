@@ -99,8 +99,8 @@ def ResampleAndMaskImage(ctImage, binaryImage, outputImageSize = np.array([96, 9
     
     normalize = tio.RescaleIntensity(out_min_max = (0, 1), p = 1)
     filter = sitk.MaskImageFilter()
-    ctImage = filter.Execute(ctImage, convexMaskImage)
     ctImage = normalize(ctImage)
+    ctImage = filter.Execute(ctImage, convexMaskImage)
 
     templateImageArray = np.zeros(outputImageSize, dtype=np.float32)
     templateImage = sitk.GetImageFromArray(templateImageArray)

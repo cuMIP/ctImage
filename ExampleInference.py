@@ -4,7 +4,7 @@ import ModelConfiguration
 
 ### process example CT image
 
-ctImage = sitk.ReadImage('./ExampleCTImage.mha)')
+ctImage = sitk.ReadImage('./ExampleCTImage.mha')
 binaryImage = DataProcessing.CreateBoneMask(ctImage)
 ctImage = DataProcessing.ResampleAndMaskImage(ctImage, binaryImage)
 
